@@ -4,19 +4,21 @@ import java.util.Arrays;
 
 public class Main {
 	
+	public static int charValue(char c) {
+		if ( isDigit(c) ) {
+			return (int) c - 48;
+		}
+		else {
+			return 0;
+		}
+	}
+	
+	public static boolean isDigit(char c) {
+		return '0' <= c && c <= '9';
+	}
 	
 	public static int stringSum(String s) {
-		int sum = 0;
-		
-		for ( int i = 0 ; i < s.length() ; ++i ) {
-			char c = s.charAt(i);
-			
-			if ( '0' <= c && c <= '9' ) {
-				sum += (int) c - 48;
-			}
-		}
-		
-		return sum;
+		return s.chars().map(i->charValue((char) i)).reduce(0, Integer::sum);
 	}
 	
 	public static void stringSum(int T, String[] arr ) {
@@ -25,7 +27,6 @@ public class Main {
 			System.out.println(stringSum(arr[i]));
 		}
 	}
-	
 	
 	public static int secondLargest(int... arr) throws ArrayIndexOutOfBoundsException {
 		
@@ -42,8 +43,6 @@ public class Main {
 		return secondLargest;
 	}
 
-	
-	
 	public static void secondLargest(int N, int[][] arr) {
 		
 		for ( int i = 0 ; i < arr.length ; ++i ) {
