@@ -5,12 +5,7 @@ import java.util.Arrays;
 public class Main {
 	
 	public static int charValue(char c) {
-		if ( isDigit(c) ) {
-			return (int) c - 48;
-		}
-		else {
-			return 0;
-		}
+		return isDigit(c) ? (int) c - 48 : 0;
 	}
 	
 	public static boolean isDigit(char c) {
@@ -18,7 +13,7 @@ public class Main {
 	}
 	
 	public static int stringSum(String s) {
-		return s.chars().map(i->charValue((char) i)).reduce(0, Integer::sum);
+		return s.chars().map(i->charValue((char) i)).sum();
 	}
 	
 	public static void stringSum(int T, String[] arr ) {
@@ -52,14 +47,9 @@ public class Main {
 
 	public static void main(String[] args) {
 		int[][] intArray = {{1,2,3},{3,4,5}};
-		
 		secondLargest(2,intArray);
 		
 		String[] stringArray = {"ab1231da"};
 		stringSum(1,stringArray);
-		
-		
-
 	}
-
 }
